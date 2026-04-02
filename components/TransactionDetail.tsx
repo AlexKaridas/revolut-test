@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { X, Download, Info, ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Transaction } from "@/lib/types";
@@ -36,10 +37,20 @@ export const TransactionDetail = ({ transaction, onClose }: TransactionDetailPro
 
           <div className="relative">
             <div className={cn(
-              "w-16 h-16 rounded-full flex items-center justify-center text-card font-semibold text-xl shadow-sm",
-              transaction.color || "bg-warning"
+              "w-16 h-16 rounded-full flex items-center justify-center text-card font-semibold text-xl shadow-sm relative overflow-hidden",
+              !transaction.img && (transaction.color || "bg-warning")
             )}>
-              {transaction.initials}
+              {transaction.img ? (
+                <Image
+                  src={transaction.img}
+                  alt={transaction.initials}
+                  fill
+                  unoptimized
+                  className="object-cover"
+                />
+              ) : (
+                transaction.initials
+              )}
             </div>
             <div className="absolute -bottom-1 -right-1 bg-shark rounded-full p-1 border-2 border-card">
               <ArrowLeft className="w-3 h-3 text-card" strokeWidth={3} />

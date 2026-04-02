@@ -20,7 +20,13 @@ export const TransactionItem = ({ tx, onClick }: TransactionItemProps) => (
         <div className="relative shrink-0">
           {tx.img ? (
             <div className="relative w-10 h-10 rounded-full">
-              <Image src={tx.img} alt={tx.initials} fill className="object-cover" />
+            <Image
+              src={tx.img}
+              alt={tx.initials}
+              fill
+              unoptimized
+              className="object-cover"
+            />
             </div>
           ) : (
             <div

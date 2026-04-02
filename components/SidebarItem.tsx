@@ -3,11 +3,9 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
-
 interface SidebarItemProps {
   label: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string; fill?: string }>;
   active?: boolean;
   hasDropdown?: boolean;
 }
