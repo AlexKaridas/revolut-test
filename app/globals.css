@@ -1,15 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f2f2f2;
+  --foreground: #191c1f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: #f2f2f2;
+  --color-card: #ffffff;
+
+  --color-shark: #191c1f;
+  --color-active-tab-text: rgba(28, 35, 42);
+  --color-muted: #6b7280;
+  --color-disabled: #9ca3af;
+
+  --color-accent-primary: #7f84f6;
+  --color-accent-vibrant: #0050ff;
+  --color-selection: #f3f4f6;
+  --color-divider: #e5e7eb;
+
+  --color-success: #1db954;
+  --color-danger: #ed3060;
+  --color-warning: #f59e0b;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +36,52 @@
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-attachment: fixed;
+}
+
+body {
+  background: linear-gradient(135deg, #e9fcff 0%, #ffffff 80%) no-repeat fixed !important;
+  color: var(--color-shark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.5s ease-in-out;
+}
+
+body.modal-open {
+  background: rgba(151, 167, 189, 0.5) !important;
+}
+
+*:not(.has-border):not([class*="border"]) {
+  border: none;
+}
+
+.has-border {
+  border: 1px solid var(--color-divider) !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-divider);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-divider) transparent;
 }
