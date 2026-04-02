@@ -16,3 +16,10 @@ export interface Transaction {
   fromAccount?: string;
   toAccount?: string;
 }
+
+export interface Account {
+  name: string;
+  iban: string;
+  balance: string;
+  currency: string;
+}

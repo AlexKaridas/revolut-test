@@ -24,7 +24,7 @@ export default function HomePage() {
   }, [isModalOpen]);
 
   return (
-    <div className="px-10 lg:px-0 flex flex-col w-full mx-auto h-full relative z-30 min-h-0 pt-6 max-w-[1440px]">
+    <div className="px-10 lg:px-0 flex flex-col w-full mx-auto h-full relative z-30 min-h-0 pt-8 max-w-[1440px]">
       <PageHeader />
 
       <div className="flex flex-col xl:flex-row gap-6 w-full flex-1 min-h-0">

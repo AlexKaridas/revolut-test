@@ -4,6 +4,7 @@ import React from "react";
 import { X, Download, Info, ChevronDown, ChevronRight, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Transaction } from "@/lib/types";
+import { TransactionDetailRow } from "./TransactionDetailRow";
 
 interface TransactionDetailProps {
   transaction: Transaction;
@@ -25,7 +26,7 @@ export const TransactionDetail = ({ transaction, onClose }: TransactionDetailPro
       mounted ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
     )}>
       <div className="py-8 relative z-10 h-full overflow-y-auto custom-scrollbar">
-        <div className="flex justify-between items-start mb-4">
+        <div className="flex justify-between items-start mb-4 px-2">
           <button
             onClick={onClose}
             className="p-1 -ml-1 text-shark hover:bg-selection rounded-full transition-colors"
@@ -46,7 +47,7 @@ export const TransactionDetail = ({ transaction, onClose }: TransactionDetailPro
           </div>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-8 px-2">
           <h2 className="text-3xl font-bold text-shark mb-1">{transaction.amount}</h2>
           <p className="text-lg font-semibold text-shark leading-tight">
             {transaction.name}
@@ -56,66 +57,68 @@ export const TransactionDetail = ({ transaction, onClose }: TransactionDetailPro
           </p>
         </div>
 
-        <div className="space-y-6">
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">Status</span>
-            <span className="text-shark font-semibold">{transaction.status}</span>
-          </div>
+        <div className="space-y-6 px-2">
+          <TransactionDetailRow label="Status" value={transaction.status} />
 
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">Statement</span>
-            <button className="flex items-center gap-1.5 text-accent-vibrant font-semibold hover:underline">
-              <Download className="w-4 h-4" />
-              Download
-            </button>
-          </div>
+          <TransactionDetailRow
+            label="Statement"
+            value={
+              <button className="flex items-center gap-1.5 text-accent-vibrant font-semibold hover:underline">
+                <Download className="w-4 h-4" />
+                Download
+              </button>
+            }
+          />
 
           <div className="pt-2">
             <span className="text-muted font-medium text-sm block mb-1">Reference</span>
             <span className="text-shark font-semibold text-sm">{transaction.reference || "—"}</span>
           </div>
 
-          <div className="flex justify-between items-center text-sm pt-2">
-            <span className="text-muted font-medium">Amount</span>
-            <span className="text-shark font-semibold">
-              {transaction.amount.replace("+", "").replace("-", "")}
-            </span>
-          </div>
+          <TransactionDetailRow
+            label="Amount"
+            value={transaction.amount.replace("+", "").replace("-", "")}
+            className="pt-2"
+          />
 
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">Fees</span>
-            <div className="flex items-center gap-1.5 text-accent-vibrant font-semibold">
-              <Info className="w-4 h-4" />
-              {transaction.fees || "No fee"}
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">Type</span>
-            <span className="text-shark font-semibold">
-              {transaction.type === "inflow" ? "Inbound transfer" : "Outbound transfer"}
-            </span>
-          </div>
-
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">From</span>
-            <button className="flex items-center gap-1 text-shark font-semibold">
-              {transaction.fromAccount || transaction.name.replace("From ", "")}
-              <ChevronDown className="w-4 h-4 text-muted" />
-            </button>
-          </div>
-
-          <div className="flex justify-between items-center text-sm">
-            <span className="text-muted font-medium">To</span>
-            <div className="flex items-center gap-2 text-accent-vibrant font-semibold max-w-[200px] truncate text-right">
-              <div className="w-5 h-5 bg-[#002D88] rounded-full flex items-center justify-center shrink-0">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+          <TransactionDetailRow
+            label="Fees"
+            value={
+              <div className="flex items-center gap-1.5 text-accent-vibrant font-semibold">
+                <Info className="w-4 h-4" />
+                {transaction.fees || "No fee"}
               </div>
-              <span className="truncate uppercase text-[12px] tracking-tight">
-                {transaction.toAccount || "IPM - JOHN XENOFONTOS ..."}
-              </span>
-            </div>
-          </div>
+            }
+          />
+
+          <TransactionDetailRow
+            label="Type"
+            value={transaction.type === "inflow" ? "Inbound transfer" : "Outbound transfer"}
+          />
+
+          <TransactionDetailRow
+            label="From"
+            value={
+              <button className="flex items-center gap-1 text-shark font-semibold">
+                {transaction.fromAccount || transaction.name.replace("From ", "")}
+                <ChevronDown className="w-4 h-4 text-muted" />
+              </button>
+            }
+          />
+
+          <TransactionDetailRow
+            label="To"
+            value={
+              <div className="flex items-center gap-2 text-accent-vibrant font-semibold max-w-[200px] truncate text-right">
+                <div className="w-5 h-5 bg-[#002D88] rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                </div>
+                <span className="truncate uppercase text-[12px] tracking-tight">
+                  {transaction.toAccount || "IPM - JOHN XENOFONTOS ..."}
+                </span>
+              </div>
+            }
+          />
 
           <div className="flex justify-between items-center text-sm pt-2">
             <span className="text-muted font-medium">Exclude from Analytics</span>

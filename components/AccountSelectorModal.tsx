@@ -2,13 +2,8 @@
 
 import React from "react";
 import { X, Plus, Search } from "lucide-react";
-
-interface Account {
-  name: string;
-  iban: string;
-  balance: string;
-  currency: string;
-}
+import { AccountListItem } from "./AccountListItem";
+import { Account } from "@/lib/types";
 
 const accounts: Account[] = [
   {
@@ -83,23 +78,21 @@ export const AccountSelectorModal = ({ isOpen, onClose }: AccountSelectorModalPr
           }`}
       >
         <div className="pb-8 px-5 pt-2">
-          <div>
-            <div className="flex items-center justify-between mb-1 relative">
-              <button
-                onClick={onClose}
-                className="p-2 -ml-2 text-shark hover:bg-selection rounded-full transition-colors z-10"
-              >
-                <X className="w-4 h-4" />
-              </button>
-              <button className="flex items-center gap-1 px-2 py-1.5 bg-shark text-card rounded-full text-sm font-bold hover:bg-shark/90 transition-colors z-10">
-                <Plus className="w-4 h-4" strokeWidth={3} />
-                New
-              </button>
-            </div>
-            <h2 className="flex items-center justify-center text-xl font-bold text-shark pointer-events-none mb-4">
-              Select your account
-            </h2>
+          <div className="flex items-center justify-between mb-1 relative">
+            <button
+              onClick={onClose}
+              className="p-2 -ml-2 text-shark hover:bg-selection rounded-full transition-colors z-10"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <button className="flex items-center gap-1 px-2 py-1.5 bg-shark text-card rounded-full text-sm font-bold hover:bg-shark/90 transition-colors z-10">
+              <Plus className="w-4 h-4" strokeWidth={3} />
+              New
+            </button>
           </div>
+          <h2 className="flex items-center justify-center text-xl font-bold text-shark pointer-events-none mb-4">
+            Select your account
+          </h2>
 
           <div className="relative mb-8">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
@@ -112,27 +105,7 @@ export const AccountSelectorModal = ({ isOpen, onClose }: AccountSelectorModalPr
 
           <div className="space-y-10 max-h-[520px] overflow-y-auto px-3 custom-scrollbar">
             {accounts.map((account, idx) => (
-              <div key={idx} className="flex items-start gap-4 group cursor-pointer">
-                <div className="shrink-0 w-11 h-11 bg-[#002D88] rounded-full flex items-center justify-center relative overflow-hidden shadow-sm">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-6 h-6 border-[1.5px] border-dotted border-yellow-400/80 rounded-full animate-[spin_20s_linear_infinite]" />
-                  </div>
-                  <div className="w-2.5 h-2.5 bg-yellow-400 rounded-full blur-[0.5px] opacity-90 shadow-[0_0_8px_rgba(250,204,21,0.6)]" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex justify-between items-start gap-2">
-                    <h3 className="font-medium text-[16px] leading-tight text-shark group-hover:text-accent-vibrant transition-colors">
-                      {account.name}
-                    </h3>
-                    <span className="font-medium text-shark whitespace-nowrap text-[16px]">
-                      {account.balance}
-                    </span>
-                  </div>
-                  <p className="text-[16px] text-muted/80 mt-0 truncate uppercase font-normal">
-                    {account.currency} · {account.iban}
-                  </p>
-                </div>
-              </div>
+              <AccountListItem key={idx} account={account} />
             ))}
           </div>
         </div>
