@@ -42,6 +42,36 @@ const accounts: Account[] = [
     iban: "LT30 3250 0858 0716 2836",
     balance: "€6,419.66",
   },
+  {
+    name: "CORNERSTONE HOLDINGS",
+    currency: "EUR",
+    iban: "LT15 3250 0943 0088 1234",
+    balance: "€45,210.00",
+  },
+  {
+    name: "OCEANVIEW INVESTMENTS",
+    currency: "EUR",
+    iban: "LT22 3250 0001 8882 4567",
+    balance: "€3,475.50",
+  },
+  {
+    name: "SKYLINE DEVELOPMENT",
+    currency: "EUR",
+    iban: "LT88 3250 0663 4591 1999",
+    balance: "€95,120.33",
+  },
+  {
+    name: "PINEWOOD ESTATES",
+    currency: "EUR",
+    iban: "LT55 3250 0111 2234 5050",
+    balance: "€1,250.00",
+  },
+  {
+    name: "RIVERFRONT PROPERTIES",
+    currency: "EUR",
+    iban: "LT77 3250 0333 4455 6060",
+    balance: "€18,940.85",
+  },
 ];
 
 interface AccountSelectorModalProps {
@@ -72,20 +102,20 @@ export const AccountSelectorModal = ({ isOpen, onClose }: AccountSelectorModalPr
       />
 
       <div
-        className={`relative bg-card w-full max-w-[420px] rounded-3xl shadow-2xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${mounted
+        className={`relative bg-[#eaf2fb] w-full max-w-[500px] rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${mounted
             ? "translate-y-0 opacity-100"
             : "translate-y-[100vh] opacity-0"
           }`}
       >
-        <div className="pb-8 px-5 pt-2">
-          <div className="flex items-center justify-between mb-1 relative">
+        <div className="pb-0 px-5 pt-2">
+          <div className="flex items-center justify-between mb-0 relative">
             <button
               onClick={onClose}
               className="p-2 -ml-2 text-shark hover:bg-selection rounded-full transition-colors z-10"
             >
               <X className="w-4 h-4" />
             </button>
-            <button className="flex items-center gap-1 px-2 py-1.5 bg-shark text-card rounded-full text-sm font-bold hover:bg-shark/90 transition-colors z-10">
+            <button className="flex items-center gap-1 px-3 py-1.5 bg-shark text-white rounded-full text-sm font-bold hover:bg-shark/90 transition-colors z-10">
               <Plus className="w-4 h-4" strokeWidth={3} />
               New
             </button>
@@ -94,16 +124,16 @@ export const AccountSelectorModal = ({ isOpen, onClose }: AccountSelectorModalPr
             Select your account
           </h2>
 
-          <div className="relative mb-8">
+          <div className="relative mb-3">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
             <input
               type="text"
               placeholder="Search"
-              className="w-full pl-12 pr-4 py-1.5 bg-[rgba(151,167,189,0.2)] rounded-full text-shark font-medium placeholder:text-black focus:outline-none focus:ring-2 focus:ring-shark/5 transition-all text-[15px]"
+              className="w-full pl-12 pr-4 py-2 bg-[rgba(151,167,189,0.2)] rounded-full text-shark font-medium placeholder:text-black/70 focus:outline-none focus:ring-2 focus:ring-shark/5 transition-all text-[15px]"
             />
           </div>
 
-          <div className="space-y-10 max-h-[520px] overflow-y-auto px-3 custom-scrollbar">
+          <div className="space-y-8 max-h-[500px] overflow-y-auto p-4 custom-scrollbar bg-white rounded-t-2xl shadow-sm mx-1 mb-0">
             {accounts.map((account, idx) => (
               <AccountListItem key={idx} account={account} />
             ))}

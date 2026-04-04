@@ -13,9 +13,9 @@ interface TransactionItemProps {
 export const TransactionItem = ({ tx, onClick }: TransactionItemProps) => (
   <tr
     onClick={onClick}
-    className="hover:bg-selection transition-colors group cursor-pointer"
+    className="transition-colors group cursor-pointer"
   >
-    <td className="py-3 pr-3">
+    <td className="py-3 pr-3 pl-2 group-hover:bg-gray-200/50 transition-colors">
       <div className="flex items-center gap-3">
         <div className="relative shrink-0">
           {tx.img ? (
@@ -55,16 +55,16 @@ export const TransactionItem = ({ tx, onClick }: TransactionItemProps) => (
         </div>
       </div>
     </td>
-    <td className="py-3 px-3 overflow-hidden">
+    <td className="py-3 px-3 overflow-hidden group-hover:bg-gray-200/50 transition-colors">
       <span className="text-sm text-muted block max-w-full whitespace-nowrap">{tx.creator || "—"}</span>
     </td>
-    <td className="py-3 px-3 whitespace-nowrap overflow-hidden">
+    <td className="py-3 px-3 whitespace-nowrap overflow-hidden group-hover:bg-gray-200/50 transition-colors">
       <span className="text-sm text-muted block ">{tx.category || "—"}</span>
     </td>
-    <td className="py-3 px-3 whitespace-nowrap overflow-hidden">
+    <td className="py-3 px-3 whitespace-nowrap overflow-hidden group-hover:bg-gray-200/50 transition-colors">
       <span className="text-sm font-medium text-shark block truncate">{tx.status}</span>
     </td>
-    <td className="py-3 px-3 text-right whitespace-nowrap">
+    <td className="py-3 px-3 text-right whitespace-nowrap group-hover:bg-gray-200/50 transition-colors">
       <span
         className={cn(
           "text-sm font-semibold",

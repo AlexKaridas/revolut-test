@@ -17,7 +17,7 @@ export const TransactionDetailRow = ({
   valueClassName 
 }: TransactionDetailRowProps) => (
   <div className={cn("flex justify-between items-center text-sm", className)}>
-    <span className="text-muted font-medium">{label}</span>
-    <span className={cn("text-shark font-semibold", valueClassName)}>{value}</span>
+    <span className="text-muted font-bold">{label}</span>
+    <span className={cn("text-shark font-normal", valueClassName)}>{value}</span>
   </div>
 );

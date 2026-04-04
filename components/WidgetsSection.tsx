@@ -1,13 +1,11 @@
 "use client";
-
-import React from "react";
 import { Plus } from "lucide-react";
 import { SubscriptionWidget } from "./SubscriptionWidget";
 import { ChatWidget } from "./ChatWidget";
 import { EmptyWidgetsState } from "./EmptyWidgetsState";
 
 export const WidgetsSection = () => (
-  <div className="flex flex-col gap-6 w-full shrink-0 pr-6 h-full overflow-y-auto custom-scrollbar pb-6 pt-8">
+  <div className="flex flex-col gap-6 w-full shrink-0 h-full overflow-y-auto custom-scrollbar pb-6 pt-0">
     <SubscriptionWidget shadow={false} />
     <ChatWidget shadow={false} />
     <div className="flex flex-col gap-4">

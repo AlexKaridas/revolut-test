@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import { Plus } from "lucide-react";
 
 export const EmptyWidgetsState = () => (
@@ -15,7 +13,7 @@ export const EmptyWidgetsState = () => (
     <p className="text-sm text-muted mb-6 max-w-[200px]">
       Quickly access your favourite shortcuts
     </p>
-    <button className="flex items-center gap-1.5 text-accent-vibrant text-xs font-semibold hover:underline">
+    <button className="flex items-center gap-1.5 text-accent-vibrant text-xs font-semibold hover:opacity-80 transition-opacity">
       <Plus className="w-3.5 h-3.5" />
       Add widgets
     </button>

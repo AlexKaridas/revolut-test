@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { Transaction } from "@/lib/types";
 import { Card } from "@/components/ui/Card";
@@ -24,18 +23,18 @@ export default function HomePage() {
   }, [isModalOpen]);
 
   return (
-    <div className="px-10 lg:px-0 flex flex-col w-full mx-auto h-full relative z-30 min-h-0 pt-8 max-w-[1440px]">
+    <div className="pr-8 xl:pr-10 flex flex-col w-full mx-auto h-full relative z-30 min-h-0 max-w-[1600px]">
       <PageHeader />
 
-      <div className="flex flex-col xl:flex-row gap-6 w-full flex-1 min-h-0">
-        <div className="flex-1 w-full min-w-0 relative z-40 h-full pb-8">
+      <div className="flex flex-col xl:flex-row gap-3 w-full flex-1 min-h-0">
+        <div className="flex-1 w-full min-w-0 relative z-30 min-h-0 flex flex-col">
           <Card shadow={false}>
             <BalanceSection onDetailsClick={() => setIsModalOpen(true)} />
             <TransactionsSection onSelectTransaction={setSelectedTransaction} />
           </Card>
         </div>
 
-        <div className="xl:w-[380px] w-full relative z-30 h-full min-h-0">
+        <div className="xl:w-[420px] w-full relative z-40 h-full min-h-0 overflow-visible">
           {selectedTransaction ? (
             <div className="h-full pb-8">
               <TransactionDetail

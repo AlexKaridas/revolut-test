@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2f2f2;
+  --background: #eaf2fb;
   --foreground: #191c1f;
 }
 
 @theme inline {
   --color-canvas: #f2f2f2;
-  --color-card: #ffffff;
+  --color-card: #f9fbfe;
+  --color-nav-item: rgba(255, 255, 255, 0.5);
 
   --color-shark: #191c1f;
   --color-active-tab-text: rgba(28, 35, 42);
@@ -45,7 +46,7 @@ body {
 }
 
 body {
-  background: linear-gradient(135deg, #e9fcff 0%, #ffffff 80%) no-repeat fixed !important;
+  background: #eaf2fb no-repeat fixed !important;
   color: var(--color-shark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -84,4 +85,26 @@ body.modal-open {
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--color-divider) transparent;
+}
+
+/* Rounded table rows — border-radius doesn't apply to <tr>, so we round the first/last <td> */
+tbody tr td:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+tbody tr td:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Global Smooth Transitions for Hover Effects */
+.transition-colors, 
+.transition-opacity, 
+.transition-shadow, 
+.transition-transform, 
+.transition-all, 
+.transition {
+  transition-duration: 250ms !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }

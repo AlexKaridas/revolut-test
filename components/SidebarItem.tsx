@@ -10,27 +10,27 @@ interface SidebarItemProps {
   hasDropdown?: boolean;
 }
 
-export const SidebarItem = ({ 
-  label, 
-  icon: Icon, 
-  active, 
-  hasDropdown 
+export const SidebarItem = ({
+  label,
+  icon: Icon,
+  active,
+  hasDropdown
 }: SidebarItemProps) => (
   <li>
     <button
       className={cn(
-        "w-full flex items-center justify-between px-3 py-2 rounded-xl text-md transition-all duration-200",
+        "w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm tracking-wider transition-all duration-200",
         active
-          ? "bg-card text-shark font-bold shadow-sm"
+          ? "bg-nav-item text-shark font-semibold"
           : "text-muted/70 hover:bg-selection hover:text-shark font-semibold"
       )}
     >
       <div className="flex items-center gap-3">
-        <Icon 
+        <Icon
           className={cn(
             "w-5 h-5",
-            active ? "text-shark" : "text-muted/40"
-          )} 
+            active ? "#2b3034" : "text-muted/40"
+          )}
           fill="currentColor"
         />
         <span>{label}</span>
